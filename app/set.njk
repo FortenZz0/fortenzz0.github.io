@@ -3,10 +3,19 @@
 
 {% set navbar = [
     {
-        "title": "Home",
-        "url": "",
-        "page_type": "home",
-        "disabled": false,
+        "title": "Домой",
+        "url": "/",
+        "page_type": "home"
+    },
+    {
+        "title": "Обо мне",
+        "url": "/about.html",
+        "page_type": "about"
+    },
+    {
+        "title": "Проекты",
+        "url": "/projects.html",
+        "page_type": "projects",
         "dropdown": [
             {
                 "title": "test",
@@ -24,6 +33,11 @@
                 disabled: true
             }
         ]
+    },
+    {
+        "title": "Контакты",
+        "url": "/contacts.html",
+        "page_type": "contacts"
     }
 ] %}
 
@@ -39,9 +53,9 @@
             {% set active = " active" if page_type == current_page_type else "" %}
 
             {% if dropdown %}
-                <a class="nav-link dropdown-toggle" href="{{ url }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="text-muted nav-link dropdown-toggle" href="{{ url }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% else %}
-                <a class="{% if is_dropdown_item %}dropdown-item{% else %}nav-link{% endif %}{{ active }}" href="{{ url }}">
+                <a class="text-muted {% if is_dropdown_item %}dropdown-item{% else %}nav-link{% endif %}{{ active }}" href="{{ url }}">
             {% endif %}
 
                 {{ title }}

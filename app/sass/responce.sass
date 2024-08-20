@@ -1,4 +1,17 @@
-@media (min-width: 992px)
+@media (min-width: 992px) // пока ширина больше 992px
     header 
-        .navbar > .container-fluid
-            justify-content: center
+        .navbar
+            & > .container-fluid
+                justify-content: center
+
+            .nav_item
+                margin: 0 5px
+
+
+
+@media (max-width: 392px)
+    footer
+        .nav
+            .nav_item > .nav-link
+                padding: 8px
+        
