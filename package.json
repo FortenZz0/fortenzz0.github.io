@@ -19,6 +19,7 @@
 		"vite-plugin-nunjucks": "^0.1.10"
 	},
 	"dependencies": {
+		"js-cookies": "^1.0.4",
 		"swiper": "^10.1.0"
 	}
 }
