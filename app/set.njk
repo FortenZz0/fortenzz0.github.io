@@ -3,42 +3,33 @@
 
 {% set navbar = [
     {
-        "title": "Домой",
-        "url": "/",
-        "page_type": "home"
-    },
-    {
         "title": "Обо мне",
-        "url": "/about.html",
-        "page_type": "about"
+        "url": "/about.html"
     },
     {
         "title": "Портфолио",
-        "url": "/portfolio.html",
-        "page_type": "portfolio"
+        "url": "/portfolio.html"
     },
     {
         "title": "Контакты",
-        "url": "/contacts.html",
-        "page_type": "contacts"
+        "url": "/contacts.html"
     }
 ] %}
 
 
 
-{% macro nav_item(title, url, page_type, disabled, divider, dropdown, is_dropdown_item=false) %}
+{% macro nav_item(title, url, disabled, divider, dropdown, is_dropdown_item=false) %}
     {% if divider %}
         <li>
             <hr class="dropdown-divider">
         </li>
     {% else %}
         <li class="{% if not is_dropdown_item %}nav_item{% endif %}{% if dropdown %} dropdown{% endif %}">
-            {% set active = " active" if page_type == current_page_type else "" %}
 
             {% if dropdown %}
                 <a class="text-muted nav-link dropdown-toggle" href="{{ url }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% else %}
-                <a class="text-muted {% if is_dropdown_item %}dropdown-item{% else %}nav-link{% endif %}{{ active }}" href="{{ url }}">
+                <a class="text-muted {% if is_dropdown_item %}dropdown-item{% else %}nav-link{% endif %}" href="{{ url }}">
             {% endif %}
 
                 {{ title }}
@@ -47,7 +38,7 @@
             {% if dropdown %}
                 <ul class="dropdown-menu">
                     {% for item in dropdown %}
-                        {{ nav_item(item.title, item.url, item.page_type, item.disabled, item.divider, item.dropdown, true) }}
+                        {{ nav_item(item.title, item.url, item.disabled, item.divider, item.dropdown, true) }}
                     {% endfor %}
                 </ul>
             {% endif %}
