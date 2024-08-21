@@ -3,39 +3,52 @@
 
 {% set navbar = [
     {
-        "title": "Домой",
-        "url": "/"
+        "title": "Главная",
+        "url": "/",
+        "page_type": "home"
     },
     {
         "title": "Обо мне",
-        "url": "/about.html"
+        "url": "/about.html",
+        "page_type": "about"
     },
     {
         "title": "Портфолио",
-        "url": "/portfolio.html"
+        "url": "/portfolio.html",
+        "page_type": "portfolio"
     },
     {
         "title": "Контакты",
-        "url": "/contacts.html"
+        "url": "/contacts.html",
+        "page_type": "contacts"
     }
 ] %}
 
 
 
-{% macro nav_item(title, url, disabled, divider, dropdown, is_dropdown_item=false) %}
+{% macro nav_item(
+    title,
+    url,
+    current_page,
+    item_page,
+    disabled,
+    divider,
+    dropdown,
+    is_dropdown_item=false
+) %}
     {% if divider %}
         <li>
             <hr class="dropdown-divider">
         </li>
     {% else %}
         <li class="{% if not is_dropdown_item %}nav_item{% endif %}{% if dropdown %} dropdown{% endif %}">
+            {% set active = "active" if current_page == item_page else "text-muted" %}
 
             {% if dropdown %}
-                <a class="text-muted nav-link dropdown-toggle" href="{{ url }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="{{ active }} nav-link dropdown-toggle" href="{{ url }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% else %}
-                <a class="text-muted {% if is_dropdown_item %}dropdown-item{% else %}nav-link{% endif %}" href="{{ url }}">
+                <a class="{{ active }} {% if is_dropdown_item %}dropdown-item{% else %}nav-link{% endif %}" href="{{ url }}">
             {% endif %}
-
                 {{ title }}
             </a>
 
