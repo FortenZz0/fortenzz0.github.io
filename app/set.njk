@@ -41,7 +41,7 @@
             <hr class="dropdown-divider">
         </li>
     {% else %}
-        <li class="{% if not is_dropdown_item %}nav_item{% endif %}{% if dropdown %} dropdown{% endif %}">
+        <li class="{% if not is_dropdown_item %}nav-item{% endif %}{% if dropdown %} dropdown{% endif %}">
             {% set active = "active" if current_page == item_page else "text-muted" %}
 
             {% if dropdown %}
