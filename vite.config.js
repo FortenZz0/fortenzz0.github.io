@@ -52,6 +52,8 @@ export default defineConfig((command) => {
         root: "app", // назначаем корневую директорию проекта
 
         clearScreen: false, // отключаем очистку консоли при запуске сервера
+
+        publicDir: "public"
     }
 
     // настройки для dev сервера
