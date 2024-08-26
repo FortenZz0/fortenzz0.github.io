@@ -25,6 +25,55 @@
 ] %}
 
 
+{% set tech_settings = {
+    "py": {
+        "title": "Python",
+        "color": "#00A8FF",
+        "bg_color": "#032f39"
+    },
+    "html": {
+        "title": "HTML",
+        "color": "#FF9C46",
+        "bg_color": "#3D2C04"
+    },
+    "njk": {
+        "title": "Nunjucks",
+        "color": "#6DAC8E",
+        "bg_color": "#08331f"
+    },
+    "vite": {
+        "title": "Vite",
+        "color": "#ffc107",
+        "bg_color": "#3d2e01"
+    },
+    "sql": {
+        "title": "SQL",
+        "color": "#FF9907",
+        "bg_color": "#3F2B0B"
+    },
+    "flask": {
+        "title": "Flask",
+        "color": "#D2D2D2",
+        "bg_color": "#3b3b3b"
+    },
+    "wp": {
+        "title": "WordPress",
+        "color": "#6D9FE9",
+        "bg_color": "#212c3b"
+    },
+    "bt": {
+        "title": "Bitrix",
+        "color": "#DF4C2F",
+        "bg_color": "#412424"
+    },
+    "unity": {
+        "title": "Unity",
+        "color": "#fff",
+        "bg_color": "#333"
+    }
+} %}
+
+
 
 {% macro nav_item(
     title,
@@ -60,5 +109,25 @@
                 </ul>
             {% endif %}
         </li>
+    {% endif %}
+{% endmacro %}
+
+
+
+{# Technology Tag #}
+{% macro tech_tag(
+    tech_name,
+    rounded = 3
+) %}
+    {% set tech = tech_settings[tech_name] %}
+
+    {% if tech %}
+        <div class="tech-tag border rounded-{{ rounded }}" style="border-color: {{ tech.color }} !important; background-color: {{ tech.bg_color }}">
+            <span class="circle rounded-circle" style="background-color: {{ tech.color }}"></span>
+
+            <span class="text" style="color: {{ tech.color }}">
+                {{ tech.title }}
+            </span>
+        </div>
     {% endif %}
 {% endmacro %}
