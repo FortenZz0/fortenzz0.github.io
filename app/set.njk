@@ -1,4 +1,8 @@
-{% set welcome = '<span class="njk">Nunjucks</span> is available!' | safe %}
+{% set test_img = {
+    "vert": "https://cdn.create.vista.com/api/media/small/63364811/stock-photo-blue-classic-tabby-exotic-shorthair-with-raving-glasses",
+    "hor": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyjGRqAvjG4sjKlO0Euw4TD4B1jKDZLDblJA&s",
+    "norm": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYGdTOFn4cl0ClTJpL4IlF9H0of5gxbM14zg&s"
+} %}
 
 
 {% set navbar = [
@@ -130,4 +134,42 @@
             </span>
         </div>
     {% endif %}
+{% endmacro %}
+
+
+
+{% macro project_card(
+    title,
+    sub_title,
+    thumb,
+    url,
+    tags = []
+) %}
+    <div class="project-card border rounded-4 bg-body-tertiary p-0">
+        <a href="{{ url }}" class="w-100 h-100 text-decoration-none p-3">
+            <div class="thumb img-zoom-container border rounded-3">
+                <img src="{{ thumb }}" alt="" srcset="">
+            </div>
+
+            <div class="title">
+                <span class="title text-white h2 m-0">
+                    {{ title }}
+                </span>
+                
+                <span class="sub-title text-muted fs-5 m-0">
+                    {{ sub_title }}
+                </span>
+            </div>
+    
+            <div class="tags hover-anim-container">
+                {% for item in tags %}
+                    {{ tech_tag(item) }}
+                {% endfor %}
+            </div>
+
+            <div class="arrow">
+                <i class="fa-solid fa-arrow-right text-secondary"></i>
+            </div>
+        </a>
+    </div>
 {% endmacro %}
