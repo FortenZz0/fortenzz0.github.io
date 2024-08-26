@@ -17,9 +17,7 @@ import htmlMinifier from 'vite-plugin-html-minifier'
 
 // Генерация объекта со всеми страницами проекта в виде { 'имя/страницы': '/полный/путь/к/файлу.html', ... }
 const glob_input = [
-    "app/*.html",
-    "app/projects/*.html",
-    "!app/cmp",
+    "app/**[!cmp]/**/*.html",
 ]
 
 const pages = Object.fromEntries(glob.sync(glob_input).map(file => [
