@@ -173,3 +173,27 @@
         </a>
     </div>
 {% endmacro %}
+
+
+
+{% macro img_card(
+    img,
+    title,
+    sub_title,
+    zoom_img = false,
+    zoom_img_class = ""
+) %}
+    <div class="img-card bg-body-tertiary border rounded-4 p-4 pb-3">
+        <div class="{% if zoom_img %}img-zoom-container {% else %}overflow-hidden {% endif %}rounded-3 mb-2">
+            <img src="{{ img }}" alt="" class="{{ zoom_img_class }}">
+        </div>
+
+        <p class="text-white text-center h3 mb-1">
+            {{ title }}
+        </p>
+
+        <p class="text-muted text-center fs-6 m-0">
+            {{ sub_title }}
+        </p>
+    </div>
+{% endmacro %}
