@@ -31,18 +31,27 @@ const pages = Object.fromEntries(glob.sync(glob_input).map(file => [
 console.log(pages)
 
 
-// Фильтры
-const formatMoney = (val) => { // получает int(1234567), возвращает str(1 234 567)
-    let result = ""
-    let v = val.toString()
-    for (let i = 0; i < v.length; i++) {
-        if (i % 3 === 0 && i !== 0)
-            result = `${v[v.length-1 - i]} ` + result
-        else
-            result = v[v.length-1 - i] + result
+
+function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+}
+
+const randomItems = (val, count) => {
+    var val_copy = val
+    var output = []
+
+    for (let i = 0; i < count; i++) {
+        let item = val_copy[getRandomInt(0, val_copy.length)]
+        
+        output.push(item)
+        val_copy = val_copy.filter((el) => {
+            return el !== item
+        })
     }
 
-    return result
+    return output
 }
 
 
@@ -91,7 +100,7 @@ export default defineConfig((command) => {
         nunjucks.default({
             nunjucksEnvironment: {
                 filters: {
-                    formatMoney: formatMoney
+                    random_items: randomItems
                 }
             }
         }),
