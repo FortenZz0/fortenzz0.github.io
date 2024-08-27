@@ -5,5 +5,47 @@
 
 
 {% block main %}
-    <h1>Home</h1>
+    <article class="main-content d-flex gap-3">
+        <section class="info">
+            {{ data.img_card(
+                "/img/me.jpg",
+                "Верховцев Иван",
+                "FortenZz / Dev",
+                my_class="mb-4"
+            ) }}
+        </section>
+
+        <section class="projects w-100">
+            <h1 class="text-center mb-4">
+                Мои некоторые проекты
+            </h1>
+
+            <div class="container-fluid p-0">
+                {% for item in data.projects | random_items(4) %}
+                    {% if loop.index0 % 2 == 0 %}
+                        <div class="row">
+                    {% endif %}
+
+                    <div class="col mb-4">
+                        {{ data.project_card(
+                            item.title,
+                            item.sub_title,
+                            item.img,
+                            item.url,
+                            item.tags
+                        ) }}
+                    </div>
+
+                    {% if loop.index0 % 2 == 1 %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <a class="btn btn-primary d-inline-flex align-items-center float-end gap-2" type="button" href="/portfolio/">
+                Все проекты
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        </section>
+    </article>
 {% endblock main %}

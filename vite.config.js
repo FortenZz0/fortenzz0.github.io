@@ -49,6 +49,8 @@ const randomItems = (val, count) => {
         val_copy = val_copy.filter((el) => {
             return el !== item
         })
+
+        if (val_copy.length == 0) break
     }
 
     return output

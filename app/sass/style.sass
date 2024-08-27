@@ -19,6 +19,12 @@ body
 main
     flex: 1 0 auto
 
+    article.main-content
+        section.projects
+            a.btn i
+                font-size: 14px
+                padding-top: 2px
+
 
 
 .img-zoom-container
@@ -72,8 +78,6 @@ main
 
 
 .project-card
-    max-width: 500px
-
     a
         display: grid
         column-gap: 25px
@@ -98,6 +102,7 @@ main
             white-space: nowrap
             max-width: 240px
             text-overflow: ellipsis
+            line-height: 1
 
 
     div.tags
@@ -137,6 +142,7 @@ main
 
 .img-card
     width: 300px
+    height: 362px
 
     & > div
         width: 100%

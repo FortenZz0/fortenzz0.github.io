@@ -78,6 +78,24 @@
 } %}
 
 
+{% set projects = [
+    {
+        "title": "F School Bot",
+        "sub_title": "TG Bot",
+        "tags": ["py", "sql"],
+        "img": "/img/f-school-bot.jpg",
+        "url": "/portfolio/f-school-bot/"
+    },
+    {
+        "title": "Sea Battle Helper",
+        "sub_title": "CLI",
+        "tags": ["py"],
+        "img": "/img/sea-battle-helper.png",
+        "url": "/portfolio/sea-battle-helper/"
+    }
+] %}
+
+
 
 {% macro nav_item(
     title,
@@ -145,14 +163,14 @@
     url,
     tags = []
 ) %}
-    <div class="project-card border rounded-4 bg-body-tertiary p-0">
+    <div class="project-card border rounded-4 bg-body-tertiary p-0 w-100">
         <a href="{{ url }}" class="w-100 h-100 text-decoration-none p-3">
             <div class="thumb img-zoom-container border rounded-3">
                 <img src="{{ thumb }}" alt="" srcset="">
             </div>
 
             <div class="title">
-                <span class="title text-white h2 m-0">
+                <span class="title text-white h3 m-0">
                     {{ title }}
                 </span>
                 
@@ -180,10 +198,11 @@
     img,
     title,
     sub_title,
+    my_class = "",
     zoom_img = false,
     zoom_img_class = ""
 ) %}
-    <div class="img-card bg-body-tertiary border rounded-4 p-4 pb-3">
+    <div class="img-card bg-body-tertiary border rounded-4 p-4 pb-3 {{ my_class }}">
         <div class="{% if zoom_img %}img-zoom-container {% else %}overflow-hidden {% endif %}rounded-3 mb-2">
             <img src="{{ img }}" alt="" class="{{ zoom_img_class }}">
         </div>
