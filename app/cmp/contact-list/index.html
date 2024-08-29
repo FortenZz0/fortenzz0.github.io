@@ -1,0 +1,21 @@
+<div class="contact-list px-1">
+    <ul class="list-group list-group-flush">
+
+        {% for item in data.contacts %}
+
+            <li class="list-group-item fs-6 p-0">
+                <a href="{{ item.url }}" class="text-white text-decoration-none d-flex justify-content-between w-100 h-100 p-2">
+                    <span class="left">
+                        <i class="{{ item.ico }} me-3"></i>{{ item.title }}
+                    </span>
+
+                    <span class="right">
+                        <i class="fa-solid fa-arrow-right text-secondary"></i>
+                    </span>
+                </a>
+            </li>
+
+        {% endfor %}
+
+    </ul>
+</div>
